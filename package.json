@@ -3,9 +3,9 @@
   "displayName": "Rego Syntax Colorizer",
   "description": "Syntax highlighting and language support for OPA Rego policy language",
   "version": "0.1.0",
-  "publisher": "opa-rego-extension",
+  "publisher": "AdamaKomi",
   "author": {
-    "name": "Your Name"
+    "name": "Adama Komi"
   },
   "license": "MIT",
   "engines": {
@@ -28,12 +28,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/rego-syntax-colorizer"
+    "url": "https://github.com/adamaKomi/opa-rego-extension.git"
   },
   "bugs": {
-    "url": "https://github.com/your-username/rego-syntax-colorizer/issues"
+    "url": "https://github.com/adamaKomi/opa-rego-extension/issues"
   },
-  "homepage": "https://github.com/your-username/rego-syntax-colorizer#readme",
+  "homepage": "https://github.com/adamaKomi/opa-rego-extension#readme",
   "icon": "resources/icon.png",
   "galleryBanner": {
     "color": "#1e1e1e",
@@ -113,9 +113,13 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "format:check": "prettier --check \"src/**/*.ts\"",
     "test": "node ./out/test/runTest.js",
+    "test:grammar": "node ./out/test/grammar/runGrammarTest.js",
+    "test:all": "npm run test:grammar && npm run test",
+    "validate:grammar": "node -e \"JSON.parse(require('fs').readFileSync('syntaxes/rego.tmLanguage.json'))\"",
     "package": "vsce package",
     "publish": "vsce publish",
-    "clean": "rimraf out"
+    "clean": "rimraf out",
+    "prepare": "npm run compile"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.6",
@@ -131,6 +135,7 @@
     "mocha": "^10.2.0",
     "prettier": "^3.1.0",
     "rimraf": "^5.0.5",
+    "sharp": "^0.34.5",
     "typescript": "^5.3.2"
   }
 }

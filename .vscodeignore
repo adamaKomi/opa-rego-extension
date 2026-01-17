@@ -3,11 +3,15 @@
 src/**
 test/**
 docs/**
+scripts/**
 
 # Config files
 .eslintrc.json
 .prettierrc
 .gitignore
+.editorconfig
+.huskyrc.json
+.lintstagedrc.json
 tsconfig.json
 *.map
 
@@ -27,4 +31,7 @@ coverage/**
 # Misc
 **/*.ts
 **/.gitkeep
-.editorconfig
+
+# Resources not needed
+resources/icon.png.placeholder
+resources/ICON_README.md

@@ -61,7 +61,7 @@ code --install-extension rego-syntax-colorizer-0.1.0.vsix
 ### From Source
 
 ```bash
-git clone https://github.com/your-username/rego-syntax-colorizer.git
+git clone https://github.com/adamaKomi/opa-rego-extension.git
 cd rego-syntax-colorizer
 npm install
 npm run compile

@@ -1,0 +1,138 @@
+# Publishing Guide
+
+This guide explains how to publish the Rego Syntax Colorizer extension.
+
+## Prerequisites
+
+1. **Azure DevOps Account** - Required for VS Code Marketplace
+2. **Personal Access Token (PAT)** - From Azure DevOps
+3. **Publisher ID** - Registered on marketplace
+
+## Setup Publisher
+
+### 1. Create Azure DevOps Organization
+
+1. Go to https://dev.azure.com/
+2. Create a new organization (if needed)
+3. Note your organization name
+
+### 2. Create Personal Access Token
+
+1. Go to Azure DevOps → User Settings → Personal Access Tokens
+2. Create new token with:
+   - **Name**: `vsce-token` (or any name)
+   - **Organization**: All accessible organizations
+   - **Scopes**: 
+     - Marketplace → Manage (check this)
+   - **Expiration**: Set appropriate duration
+3. Copy the token immediately (shown only once)
+
+### 3. Create Publisher
+
+```bash
+npx vsce create-publisher YOUR_PUBLISHER_NAME
+```
+
+Or create manually at: https://marketplace.visualstudio.com/manage
+
+### 4. Update package.json
+
+Update the `publisher` field in `package.json`:
+
+```json
+{
+  "publisher": "YOUR_PUBLISHER_NAME"
+}
+```
+
+## Publishing
+
+### Local Publishing
+
+```bash
+# Login to vsce
+npx vsce login YOUR_PUBLISHER_NAME
+
+# Publish
+npm run publish
+```
+
+### CI/CD Publishing (GitHub Actions)
+
+1. Add secrets to your GitHub repository:
+   - `VSCE_PAT`: Your Azure DevOps PAT
+   - `OVSX_PAT`: Your Open VSX PAT (optional)
+
+2. Push to main branch with commit message starting with `release:`
+
+```bash
+git commit -m "release: v0.1.0 - Initial release"
+git push origin main
+```
+
+## Version Management
+
+### Bump Version
+
+```bash
+# Patch version (0.1.0 → 0.1.1)
+npm version patch
+
+# Minor version (0.1.0 → 0.2.0)
+npm version minor
+
+# Major version (0.1.0 → 1.0.0)
+npm version major
+```
+
+### Pre-release
+
+```bash
+npx vsce package --pre-release
+npx vsce publish --pre-release
+```
+
+## Verification
+
+After publishing:
+
+1. Check https://marketplace.visualstudio.com/items?itemName=YOUR_PUBLISHER.rego-syntax-colorizer
+2. Install from VS Code: `ext install YOUR_PUBLISHER.rego-syntax-colorizer`
+3. Verify all features work correctly
+
+## Open VSX (Alternative Registry)
+
+For open-source alternative to VS Code Marketplace:
+
+1. Create account at https://open-vsx.org/
+2. Create access token
+3. Publish:
+
+```bash
+npx ovsx publish -p YOUR_OVSX_TOKEN
+```
+
+## Troubleshooting
+
+### "Publisher not found"
+- Ensure publisher is created and verified
+- Check publisher name matches exactly
+
+### "Invalid PAT"
+- Regenerate PAT with correct scopes
+- Ensure token hasn't expired
+
+### "Extension already exists"
+- Increment version number
+- Check you're using correct publisher
+
+## Checklist Before Publishing
+
+- [ ] Update version in `package.json`
+- [ ] Update `CHANGELOG.md`
+- [ ] Run all tests: `npm run test:all`
+- [ ] Run linting: `npm run lint`
+- [ ] Test locally with F5
+- [ ] Verify icon displays correctly
+- [ ] Check README renders properly
+- [ ] Commit all changes

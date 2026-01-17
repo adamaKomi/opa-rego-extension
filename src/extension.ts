@@ -10,8 +10,8 @@ export function activate(context: vscode.ExtensionContext): void {
   // Register the show version command
   const showVersionCommand = vscode.commands.registerCommand('rego.showVersion', () => {
     const extension = vscode.extensions.getExtension('opa-rego-extension.rego-syntax-colorizer');
-    const version = extension?.packageJSON.version || 'unknown';
-    vscode.window.showInformationMessage(`Rego Syntax Colorizer v${version}`);
+    const version = (extension?.packageJSON as { version?: string })?.version ?? 'unknown';
+    void vscode.window.showInformationMessage(`Rego Syntax Colorizer v${version}`);
   });
 
   context.subscriptions.push(showVersionCommand);

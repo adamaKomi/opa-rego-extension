@@ -49,7 +49,7 @@ Feature suggestions are welcome! Please include:
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/rego-syntax-colorizer.git
+git clone https://github.com/adamaKomi/opa-rego-extension.git
 cd rego-syntax-colorizer
 
 # Install dependencies
