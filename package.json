@@ -1,0 +1,136 @@
+{
+  "name": "rego-syntax-colorizer",
+  "displayName": "Rego Syntax Colorizer",
+  "description": "Syntax highlighting and language support for OPA Rego policy language",
+  "version": "0.1.0",
+  "publisher": "opa-rego-extension",
+  "author": {
+    "name": "Your Name"
+  },
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Formatters"
+  ],
+  "keywords": [
+    "rego",
+    "opa",
+    "open policy agent",
+    "policy",
+    "authorization",
+    "abac",
+    "rbac",
+    "syntax highlighting"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/rego-syntax-colorizer"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/rego-syntax-colorizer/issues"
+  },
+  "homepage": "https://github.com/your-username/rego-syntax-colorizer#readme",
+  "icon": "resources/icon.png",
+  "galleryBanner": {
+    "color": "#1e1e1e",
+    "theme": "dark"
+  },
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onLanguage:rego"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "rego",
+        "aliases": [
+          "Rego",
+          "rego",
+          "OPA Rego"
+        ],
+        "extensions": [
+          ".rego"
+        ],
+        "configuration": "./languages/rego-language-configuration.json",
+        "icon": {
+          "light": "./resources/rego-icon-light.svg",
+          "dark": "./resources/rego-icon-dark.svg"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "rego",
+        "scopeName": "source.rego",
+        "path": "./syntaxes/rego.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "rego",
+        "path": "./snippets/rego.snippets.json"
+      }
+    ],
+    "configuration": {
+      "title": "Rego Syntax Colorizer",
+      "properties": {
+        "rego.trace.server": {
+          "type": "string",
+          "enum": [
+            "off",
+            "messages",
+            "verbose"
+          ],
+          "default": "off",
+          "description": "Traces the communication between VS Code and the Rego language server."
+        },
+        "rego.formatting.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/disable Rego formatting."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "rego.showVersion",
+        "title": "Show Rego Extension Version",
+        "category": "Rego"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "lint:fix": "eslint src --ext ts --fix",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\"",
+    "test": "node ./out/test/runTest.js",
+    "package": "vsce package",
+    "publish": "vsce publish",
+    "clean": "rimraf out"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.10.0",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "@vscode/test-electron": "^2.3.8",
+    "@vscode/vsce": "^2.22.0",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^9.1.0",
+    "glob": "^10.3.10",
+    "mocha": "^10.2.0",
+    "prettier": "^3.1.0",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.3.2"
+  }
+}

@@ -1,0 +1,214 @@
+{
+  "Package declaration": {
+    "prefix": "pkg",
+    "body": [
+      "package ${1:policy}",
+      "",
+      "$0"
+    ],
+    "description": "Create a new Rego package declaration"
+  },
+  "Import statement": {
+    "prefix": "imp",
+    "body": [
+      "import ${1:data.${2:module}}"
+    ],
+    "description": "Import a module"
+  },
+  "Import future keywords": {
+    "prefix": "impf",
+    "body": [
+      "import future.keywords.${1|if,in,every,contains|}"
+    ],
+    "description": "Import future keywords"
+  },
+  "Import all future keywords": {
+    "prefix": "impfa",
+    "body": [
+      "import future.keywords.if",
+      "import future.keywords.in",
+      "import future.keywords.every",
+      "import future.keywords.contains"
+    ],
+    "description": "Import all common future keywords"
+  },
+  "Default rule": {
+    "prefix": "default",
+    "body": [
+      "default ${1:allow} := ${2:false}"
+    ],
+    "description": "Create a default rule"
+  },
+  "Allow rule": {
+    "prefix": "allow",
+    "body": [
+      "${1:allow} if {",
+      "\t${2:# conditions}",
+      "\t$0",
+      "}"
+    ],
+    "description": "Create an allow rule"
+  },
+  "Deny rule": {
+    "prefix": "deny",
+    "body": [
+      "${1:deny} if {",
+      "\t${2:# conditions}",
+      "\t$0",
+      "}"
+    ],
+    "description": "Create a deny rule"
+  },
+  "Rule with body": {
+    "prefix": "rule",
+    "body": [
+      "${1:rule_name} if {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Create a basic rule with body"
+  },
+  "Rule with value": {
+    "prefix": "rulev",
+    "body": [
+      "${1:rule_name} := ${2:value} if {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Create a rule that returns a value"
+  },
+  "Partial rule (set)": {
+    "prefix": "rules",
+    "body": [
+      "${1:rule_name} contains ${2:item} if {",
+      "\t${3:some ${4:x} in ${5:collection}}",
+      "\t$0",
+      "}"
+    ],
+    "description": "Create a partial rule that generates a set"
+  },
+  "Partial rule (object)": {
+    "prefix": "ruleo",
+    "body": [
+      "${1:rule_name}[${2:key}] := ${3:value} if {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Create a partial rule that generates an object"
+  },
+  "Some iteration": {
+    "prefix": "some",
+    "body": [
+      "some ${1:x} in ${2:collection}"
+    ],
+    "description": "Iterate with some"
+  },
+  "Every iteration": {
+    "prefix": "every",
+    "body": [
+      "every ${1:x} in ${2:collection} {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Universal quantification with every"
+  },
+  "If-else": {
+    "prefix": "ifelse",
+    "body": [
+      "${1:result} := ${2:value1} if {",
+      "\t${3:condition}",
+      "} else := ${4:value2}"
+    ],
+    "description": "If-else expression"
+  },
+  "Test rule": {
+    "prefix": "test",
+    "body": [
+      "test_${1:rule_name} if {",
+      "\t${2:allow} with input as ${3:{}}",
+      "\t$0",
+      "}"
+    ],
+    "description": "Create a test rule"
+  },
+  "Test with mock data": {
+    "prefix": "testm",
+    "body": [
+      "test_${1:rule_name} if {",
+      "\t${2:result} with input as {",
+      "\t\t\"${3:key}\": ${4:value}",
+      "\t}",
+      "\t${2:result} == ${5:expected}",
+      "}"
+    ],
+    "description": "Create a test with mock input data"
+  },
+  "Comprehension (set)": {
+    "prefix": "comps",
+    "body": [
+      "{${1:x} | some ${1:x} in ${2:collection}; ${3:condition}}"
+    ],
+    "description": "Set comprehension"
+  },
+  "Comprehension (array)": {
+    "prefix": "compa",
+    "body": [
+      "[${1:x} | some ${1:x} in ${2:collection}; ${3:condition}]"
+    ],
+    "description": "Array comprehension"
+  },
+  "Comprehension (object)": {
+    "prefix": "compo",
+    "body": [
+      "{${1:k}: ${2:v} | some ${1:k}, ${2:v} in ${3:object}; ${4:condition}}"
+    ],
+    "description": "Object comprehension"
+  },
+  "RBAC policy template": {
+    "prefix": "rbac",
+    "body": [
+      "package ${1:authz}",
+      "",
+      "import future.keywords.if",
+      "import future.keywords.in",
+      "",
+      "default allow := false",
+      "",
+      "allow if {",
+      "\tsome role in input.user.roles",
+      "\tsome permission in data.role_permissions[role]",
+      "\tpermission == input.action",
+      "}",
+      "$0"
+    ],
+    "description": "RBAC policy template"
+  },
+  "ABAC policy template": {
+    "prefix": "abac",
+    "body": [
+      "package ${1:authz}",
+      "",
+      "import future.keywords.if",
+      "import future.keywords.in",
+      "",
+      "default allow := false",
+      "",
+      "allow if {",
+      "\t# Subject attributes",
+      "\tinput.subject.${2:department} == input.resource.${3:owner_department}",
+      "\t",
+      "\t# Action check",
+      "\tinput.action in ${4:[\"read\", \"write\"]}",
+      "}",
+      "$0"
+    ],
+    "description": "ABAC policy template"
+  },
+  "Print debug": {
+    "prefix": "print",
+    "body": [
+      "print(\"${1:debug}: \", ${2:variable})"
+    ],
+    "description": "Print for debugging"
+  }
+}

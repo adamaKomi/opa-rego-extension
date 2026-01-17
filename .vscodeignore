@@ -1,0 +1,30 @@
+# Source files (not needed in published extension)
+.vscode/**
+src/**
+test/**
+docs/**
+
+# Config files
+.eslintrc.json
+.prettierrc
+.gitignore
+tsconfig.json
+*.map
+
+# Build/Dev files
+node_modules/**
+out/test/**
+coverage/**
+.nyc_output/**
+
+# Git
+.git/**
+.github/**
+
+# Package files
+*.vsix
+
+# Misc
+**/*.ts
+**/.gitkeep
+.editorconfig
