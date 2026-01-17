@@ -5,7 +5,7 @@ suite('Extension Test Suite', () => {
   void vscode.window.showInformationMessage('Start all tests.');
 
   test('Extension should be present', () => {
-    assert.ok(vscode.extensions.getExtension('opa-rego-extension.rego-syntax-colorizer'));
+    assert.ok(vscode.extensions.getExtension('opa-rego-extension.rego-syntax-support'), 'Extension should be installed');
   });
 
   test('Rego language should be registered', async () => {

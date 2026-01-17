@@ -75,7 +75,7 @@ jobs:
       - name: Upload VSIX artifact
         uses: actions/upload-artifact@v4
         with:
-          name: rego-syntax-colorizer-vsix
+          name: rego-syntax-support-vsix
           path: '*.vsix'
           retention-days: 30
 

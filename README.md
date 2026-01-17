@@ -1,6 +1,6 @@
-# Rego Syntax Colorizer
+# Rego Syntax Support
 
-[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/opa-rego-extension.rego-syntax-colorizer?label=VS%20Code%20Marketplace&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=opa-rego-extension.rego-syntax-colorizer)
+[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/AdamaKomi.rego-syntax-support?label=VS%20Code%20Marketplace&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=AdamaKomi.rego-syntax-support)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 > 🎨 Syntax highlighting and language support for [Open Policy Agent (OPA)](https://www.openpolicyagent.org/) Rego policy language in Visual Studio Code.
@@ -49,20 +49,20 @@
 
 1. Open **VS Code**
 2. Go to **Extensions** (`Ctrl+Shift+X` / `Cmd+Shift+X`)
-3. Search for **"Rego Syntax Colorizer"**
+3. Search for **"Rego Syntax Support"**
 4. Click **Install**
 
 ### From VSIX File
 
 ```bash
-code --install-extension rego-syntax-colorizer-0.1.0.vsix
+code --install-extension rego-syntax-support-0.1.0.vsix
 ```
 
 ### From Source
 
 ```bash
 git clone https://github.com/adamaKomi/opa-rego-extension.git
-cd rego-syntax-colorizer
+cd opa-rego-extension
 npm install
 npm run compile
 # Press F5 to launch Extension Development Host

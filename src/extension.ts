@@ -5,13 +5,13 @@ import * as vscode from 'vscode';
  * Called when the extension is first activated (e.g., when a .rego file is opened).
  */
 export function activate(context: vscode.ExtensionContext): void {
-  console.log('Rego Syntax Colorizer extension is now active!');
+  console.log('Rego Syntax Support extension is now active!');
 
   // Register the show version command
   const showVersionCommand = vscode.commands.registerCommand('rego.showVersion', () => {
-    const extension = vscode.extensions.getExtension('opa-rego-extension.rego-syntax-colorizer');
+    const extension = vscode.extensions.getExtension('opa-rego-extension.rego-syntax-support');
     const version = (extension?.packageJSON as { version?: string })?.version ?? 'unknown';
-    void vscode.window.showInformationMessage(`Rego Syntax Colorizer v${version}`);
+    void vscode.window.showInformationMessage(`Rego Syntax Support v${version}`);
   });
 
   context.subscriptions.push(showVersionCommand);
@@ -30,5 +30,5 @@ export function activate(context: vscode.ExtensionContext): void {
  * Called when the extension is deactivated.
  */
 export function deactivate(): void {
-  console.log('Rego Syntax Colorizer extension is now deactivated.');
+  console.log('Rego Syntax Support extension is now deactivated.');
 }

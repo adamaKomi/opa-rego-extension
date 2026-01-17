@@ -1,8 +1,8 @@
 {
-  "name": "rego-syntax-colorizer",
-  "displayName": "Rego Syntax Colorizer",
+  "name": "rego-syntax-support",
+  "displayName": "Rego Syntax Support",
   "description": "Syntax highlighting and language support for OPA Rego policy language",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "AdamaKomi",
   "author": {
     "name": "Adama Komi"
@@ -76,7 +76,7 @@
       }
     ],
     "configuration": {
-      "title": "Rego Syntax Colorizer",
+      "title": "Rego Syntax Support",
       "properties": {
         "rego.trace.server": {
           "type": "string",

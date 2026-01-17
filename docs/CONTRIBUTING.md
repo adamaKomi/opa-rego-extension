@@ -1,6 +1,6 @@
-# Contributing to Rego Syntax Colorizer
+# Contributing to Rego Syntax Support
 
-First off, thank you for considering contributing to Rego Syntax Colorizer! 🎉
+First off, thank you for considering contributing to Rego Syntax Support! 🎉
 
 ## Code of Conduct
 
@@ -50,7 +50,7 @@ Feature suggestions are welcome! Please include:
 ```bash
 # Clone the repository
 git clone https://github.com/adamaKomi/opa-rego-extension.git
-cd rego-syntax-colorizer
+cd rego-syntax-support
 
 # Install dependencies
 npm install

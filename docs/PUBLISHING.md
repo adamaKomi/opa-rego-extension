@@ -1,6 +1,6 @@
 # Publishing Guide
 
-This guide explains how to publish the Rego Syntax Colorizer extension.
+This guide explains how to publish the Rego Syntax Support extension.
 
 ## Prerequisites
 
@@ -96,8 +96,8 @@ npx vsce publish --pre-release
 
 After publishing:
 
-1. Check https://marketplace.visualstudio.com/items?itemName=YOUR_PUBLISHER.rego-syntax-colorizer
-2. Install from VS Code: `ext install YOUR_PUBLISHER.rego-syntax-colorizer`
+1. Check https://marketplace.visualstudio.com/items?itemName=YOUR_PUBLISHER.rego-syntax-support
+2. Install from VS Code: `ext install YOUR_PUBLISHER.rego-syntax-support`
 3. Verify all features work correctly
 
 ## Open VSX (Alternative Registry)
